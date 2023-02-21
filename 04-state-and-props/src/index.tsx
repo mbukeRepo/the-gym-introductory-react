@@ -18,11 +18,7 @@ const ClickCounter: FC<ClickCounterProps> = ({ increment, initialCount }) => {
   );
 };
 
-const element = (
-  <>
-    <ClickCounter increment={1} initialCount={10}></ClickCounter>
-  </>
-);
+const element = <ClickCounter increment={1} initialCount={10}></ClickCounter>;
 
 const root = ReactDOM.createRoot(document.getElementById("root") as Element);
 root.render(element);
