@@ -1,41 +1,11 @@
-import React, {FC} from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
+import React, { FC } from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
 
-interface Child {
-  name: string
-  lastName: string
-  bloodType: BloodType
-}
+const helloWorldElement = <div className="container">Hello World!</div>;
 
-interface Props {
-  name: string
-  lastName: string
-  bloodType: BloodType
-  children: Child[]
-}
+const rootElement = document.getElementById("root");
 
-type Props2 = {
-  name: string
-  lastName: string
-  bloodType: BloodType
-}
+const root = ReactDOM.createRoot(rootElement as Element);
 
-type BloodType = "A+" | "A-" | "O+"
-
-interface MyComponentProps {
-  name: string
-  age: number
-}
-
-const MyComponent: FC<MyComponentProps> = (props) =>{
-  return <div>Hello {props.name}, your age is {props.age}</div>
-}
-
-const helloWorldElement = <div className="container">Hello World!</div>
-
-const rootElement = document.getElementById('root')
-
-const root = ReactDOM.createRoot(rootElement as Element)
-
-root.render(helloWorldElement)
+root.render(helloWorldElement);

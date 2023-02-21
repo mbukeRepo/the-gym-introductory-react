@@ -1,45 +1,36 @@
-import React, {FC} from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
+import { FC } from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
 
 interface AnimalConfig {
-  name: string
-  translation: string
-  isDuped?: boolean
+  name: string;
 }
 
 const animals: AnimalConfig[] = [
-  {name: 'dog', translation: 'perro', isDuped: undefined},
-  {name: 'cat', translation: 'gato'},
-  {name: 'chicken', translation: 'pollo', isDuped: true},
-  {name: 'duck', translation: 'pato', isDuped: true},
-  {name: 'cow', translation: 'vaca' },
-  {name: 'sheep', translation: 'oveja' },
-  {name: 'horse', translation: 'caballo' }
-]
+  { name: "dog" },
+  { name: "cat" },
+  { name: "chicken" },
+  { name: "duck" },
+  { name: "cow" },
+  { name: "sheep" },
+  { name: "horse" },
+];
 
-function AnimalList() {
+const AnimalList = () => {
   return (
-      <ul>
-        {
-          animals
-          .filter(({isDuped}) => isDuped)
-          .map(({name, translation}) => <AnimalItem name={name} translation={translation}/>)
-        }
-      </ul>
-  )
-}
-
+    <ul>
+      {animals.map(({ name }) => (
+        <AnimalItem name={name} />
+      ))}
+    </ul>
+  );
+};
 
 const AnimalItem: FC<{
-  name: string
-  translation: string
-}> = ({name, translation}) =>  <li key={name}>
-    {getAnimalLabel(name, translation)}
-  </li>
+  name: string;
+}> = ({ name }) => <li key={name}>{getAnimalLabel(name)}</li>;
 
+const getAnimalLabel = (name: string) => `${name}`;
 
-const getAnimalLabel = (name: string, translation: string) => `${name} = ${translation}`
-
-const root = ReactDOM.createRoot(document.getElementById('root') as Element)
-root.render(<AnimalList />)
+const root = ReactDOM.createRoot(document.getElementById("root") as Element);
+root.render(<AnimalList />);
